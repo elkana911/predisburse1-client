@@ -1,0 +1,118 @@
+<h5>PCP Upload {{submitted}}</h5>
+<div style="overflow: vertical;">
+  <form [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
+
+    <div class="form-row">
+      <mat-form-field class="col-md-5">
+        <mat-placeholder>Agreement</mat-placeholder>
+        <input formControlName="w_input_agreement" matInput type="search">
+        <mat-error *ngIf="submitted && f.w_input_agreement.errors?.required">
+          Agreement is required
+        </mat-error>
+
+        <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="showLOVAgreement()">
+          <mat-icon>search</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <mat-form-field class="col-md-7">
+        <mat-placeholder>MF-SHORT</mat-placeholder>
+        <input formControlName="r_mf_short_desc" matInput type="text" readonly>
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field class="col-md-5">
+        <mat-placeholder>Multifinance</mat-placeholder>
+        <input formControlName="r_mf_coy_id" matInput readonly>
+      </mat-form-field>
+
+      <mat-form-field class="col-md-7">
+        <mat-placeholder>MF Name</mat-placeholder>
+        <input formControlName="r_mf_full_name" matInput readonly>
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field class="col-md-5">
+        <mat-placeholder>Template</mat-placeholder>
+        <input formControlName="r_scheme" matInput>
+        <mat-error *ngIf="submitted && f.r_scheme.errors?.required">
+          Template is required
+        </mat-error>
+
+        <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="showLOVScheme()">
+          <mat-icon>search</mat-icon>
+        </button>
+
+      </mat-form-field>
+
+      <mat-form-field class="col-md-7">
+        <mat-placeholder>Scheme</mat-placeholder>
+        <input formControlName="r_scheme_desc" matInput readonly>
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field class="col-md-5">
+        <mat-placeholder>No Surat</mat-placeholder>
+        <input formControlName="w_no_surat" matInput>
+        <mat-error *ngIf="submitted && f.w_no_surat.errors?.required">
+          No Surat is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="col-md-5">
+        <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="myDatepicker1" formControlName="w_tgl_surat"
+          placeholder="Tgl (dd/mm/yyyy)">
+        <mat-datepicker-toggle matSuffix [for]="myDatepicker1"></mat-datepicker-toggle>
+        <mat-datepicker #myDatepicker1></mat-datepicker>
+        <mat-error *ngIf="submitted && f.w_tgl_surat.errors?.required">
+          Tgl Surat is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+    fileKontrak
+    <table class="table-striped">
+      <tbody>
+        <tr>
+          <td>File Kontrak</td>
+          <td><input type="file" class="form-control" name="fileKontrak" (change)="onFileKontrakSelect($event)" />
+            <mat-error *ngIf="submitted && f.fileKontrak.errors?.required">
+              File Kontrak is required
+            </mat-error>
+
+          </td>
+        </tr>
+        <tr>
+          <td>File Object</td>
+          <td><input type="file" class="form-control" name="fileObject" (change)="onFileObjectSelect($event)" />
+            <mat-error *ngIf="submitted && f.fileObject.errors?.required">
+              File Kendaraan is required
+            </mat-error>
+          </td>
+        </tr>
+        <tr>
+          <td>File EndUser</td>
+          <td><input type="file" class="form-control" name="fileEndUser" (change)="onFileEndUserSelect($event)" />
+            <mat-error *ngIf="submitted && f.fileEndUser.errors?.required">
+              File EndUser is required
+            </mat-error>
+          </td>
+        </tr>
+        <tr>
+          <td>File Pengurus</td>
+          <td><input type="file" class="form-control" name="filePengurus" (change)="onFilePengurusSelect($event)" />
+            <mat-error *ngIf="submitted && f.filePengurus.errors?.required">
+              File Pengurus is required
+            </mat-error>
+          </td>
+          <!-- <td><button class="btn btn-danger" (click)="deleteEmployee(employee)"> Delete Employee</button></td> -->
+        </tr>
+      </tbody>
+    </table>
+    <div class="modal-footer">
+      <button type="button" class="btn" matDialogClose>Batal</button>
+      <button type="submit" class="btn btn-primary">Upload</button>
+    </div>
+  </form>

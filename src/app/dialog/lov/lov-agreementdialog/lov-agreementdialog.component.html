@@ -1,0 +1,16 @@
+<div>
+  <input type = "text" value = "" #inputSearch (keyup)="onKey(inputSearch.value)">
+  <button (click) = "onSearch(inputSearch.value)">Search</button>
+  </div>
+  <ag-grid-angular 
+      style="height: 200px;" 
+      class="ag-theme-balham"
+      [rowData]="rowData"
+      [gridOptions]="gridOptions"
+      (rowDoubleClicked)="onDoubleClicked($event)"
+      >
+  </ag-grid-angular>    
+  
+  <div class="modal-footer">
+    <button type="button" class="btn" matDialogClose>Batal</button>
+  </div>

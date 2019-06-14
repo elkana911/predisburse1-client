@@ -1,0 +1,52 @@
+<div *ngIf="showSpinner" class="spinner"></div>
+<p>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="uploadFile()">Upload...</button>
+  </div>
+  <p>
+    <div class="col-md-12">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Session No</th>
+            <th>Agreement</th>
+            <th>&nbsp;</th>
+            <th>Multi Finance</th>
+            <th>Scheme</th>
+            <th>No Surat</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let employee of pcpUploads">
+            <td>{{employee.pcp.sessionNo}}</td>
+            <td>{{employee.pcp.agmtShortname}}</td>
+            <td>{{employee.mfShortName}}</td>
+            <td>{{employee.mfFullName}}</td>
+            <td>{{employee.pcp.scheme}}</td>
+            <td>{{employee.pcp.letterNo}}</td>
+            <td>{{employee.pcp.status}}</td>
+            <!-- <td><button class="btn btn-danger" (click)="deleteEmployee(employee)"> Delete Employee</button></td> -->
+          </tr>
+        </tbody>
+      </table>
+
+      <div *ngIf="!showSpinner">
+        <div class="modal-footer">
+          <div class="btn-group">
+            <button class="btn btn-sm btn-info" type="button" (click)="kontrak()">Kontrak</button>
+            <button class="btn btn-sm btn-info" type="button" (click)="kontrak()">Object</button>
+            <button class="btn btn-sm btn-info" (click)="kontrak()">End User</button>
+            <button class="btn btn-sm btn-info" (click)="kontrak()">Pengurus</button>
+          </div>
+
+          <div class="btn-group">
+            <button class="btn btn-sm btn-success" (click)="kontrak()">Validate</button>
+            <button class="btn btn-sm btn-success" (click)="kontrak()">Hasil Validasi</button>
+            <button class="btn btn-sm btn-success" (click)="kontrak()">Print LHP</button>
+            <button class="btn btn-sm btn-success" (click)="kontrak()">Submit4Approval</button>
+          </div>
+        </div>
+        <app-footer></app-footer>
+      </div>
+    </div>

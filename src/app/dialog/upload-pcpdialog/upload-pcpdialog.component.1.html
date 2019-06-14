@@ -1,0 +1,118 @@
+<h5>PCP Upload {{submitted}}</h5>
+<div style="overflow: vertical;">
+  <form [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
+
+    <div class="form-row">
+      <mat-form-field class="col-md-5">
+        <mat-placeholder>Agreement</mat-placeholder>
+        <input matInput type="search">
+        <button mat-button matSuffix (click)="showLOV($event)">
+          <mat-icon>search</mat-icon>
+        </button>
+        <!-- <mat-error *ngIf="submitted && f.inputAgreement.errors?.required">
+          Agreement is required
+        </mat-error> -->
+      </mat-form-field>
+
+      <mat-form-field class="col-md-7">
+        <mat-placeholder>MF-SHORT</mat-placeholder>
+        <!-- <input matInput upperCaseInput type="text" [readonly]="true"> -->
+      </mat-form-field>
+    </div>
+
+
+    <div class="form-row">
+      <!-- <div class="form-group col-md-5">
+        <label for="inputAgreement">Agreement</label>
+        <div class="input-group">
+          <input formControlName="inputAgreement" class="form-control" type="search" placeholder="search"
+            [ngClass]="{ 'is-invalid': submitted && f.inputAgreement.errors }">
+          <span class="input-group-append">
+            <button class="btn btn-outline-secondary border-left-0 border" type="button" (click)="showLOV()">
+              <i class="fa fa-search">...</i>
+            </button>
+          </span>
+        </div>
+      </div> -->
+      <!-- <div class="col-md-7">
+        <label>&nbsp;</label>
+        <input type="text" formControlName="mf_short_desc" class="form-control" readonly onfocus="this.blur();"
+          placeholder="MF-SHORT">
+      </div> -->
+    </div>
+    <!-- <div *ngIf="submitted && f.inputAgreement.errors" class="invalid-feedback">
+      <div *ngIf="f.inputAgreement.errors.required">Agreement is required</div>
+    </div> -->
+
+    <div class="form-row">
+      <div class="form-group col-md-5">
+        <label for="inputTemplate">Template</label>
+        <div class="input-group">
+          <input formControlName="inputTemplate" class="form-control py-2 border-right-0 border" type="search"
+            placeholder="" [ngClass]="{ 'is-invalid': submitted && f.inputTemplate.errors }">
+          <span class="input-group-append">
+            <button class="btn btn-outline-secondary border-left-0 border" type="button">
+              <i class="fa fa-search">...</i>
+            </button>
+          </span>
+        </div>
+      </div>
+      <div class="col-md-7">
+        <label>&nbsp;</label>
+        <input type="text" class="form-control" readonly onfocus="this.blur();" placeholder="">
+      </div>
+    </div>
+    <div *ngIf="submitted && f.inputTemplate.errors" class="invalid-feedback">
+      <div *ngIf="f.inputTemplate.errors.required">Template is required</div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-5">
+        <mat-form-field>
+          <input type="text" matInput placeholder="No Surat" formControlName="inputNoSurat">
+        </mat-form-field>
+        <mat-error *ngIf="submitted && f.inputNoSurat.errors?.required">
+          Nomor Surat is required
+        </mat-error>
+      </div>
+
+      <div class="form-group col-md-5">
+        <mat-form-field>
+          <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="myDatepicker1"
+            formControlName="inputTanggal" placeholder="dd/mm/yyyy">
+          <mat-datepicker-toggle matSuffix [for]="myDatepicker1"></mat-datepicker-toggle>
+          <mat-datepicker #myDatepicker1></mat-datepicker>
+          <mat-error *ngIf="submitted && f.inputTanggal.errors?.required">
+            Tgl Surat is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <table class="table table-striped">
+      <tbody>
+        <tr>
+          <td>File Kontrak</td>
+          <td><input type="file" class="form-control" name="fileKontrak" (change)="onFileKontrakSelect($event)" /></td>
+        </tr>
+        <tr>
+          <td>File Object</td>
+          <td><input type="file" class="form-control" name="fileObject" (change)="onFileObjectSelect($event)" /></td>
+        </tr>
+        <tr>
+          <td>File EndUser</td>
+          <td><input type="file" class="form-control" name="fileEndUser" (change)="onFileEndUserSelect($event)" /></td>
+        </tr>
+        <tr>
+          <td>File Pengurus</td>
+          <td><input type="file" class="form-control" name="filePengurus" (change)="onFilePengurusSelect($event)" />
+          </td>
+          <!-- <td><button class="btn btn-danger" (click)="deleteEmployee(employee)"> Delete Employee</button></td> -->
+        </tr>
+      </tbody>
+    </table>
+    <div class="modal-footer">
+      <button type="button" class="btn" matDialogClose>Batal</button>
+      <button type="submit" class="btn btn-primary">Upload</button>
+    </div>
+  </form>
